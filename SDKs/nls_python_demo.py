@@ -116,7 +116,7 @@ class NLSClient:
             except ClientException as e:
                 logger.error(str(e))
         if statusText == STATUS_SUCCESS:
-            logger.success("录音文件识别成功!")
+            logger.debug("录音文件识别成功!")
         else:
             logger.error("录音文件识别失败!,请检查输出")
         return getResponse
