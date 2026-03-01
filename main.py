@@ -10,7 +10,7 @@ from astrbot.api.star import Context, Star, register
 
 from .SDKs.nls_python_demo import NLSClient
 from .SDKs.oss_python_demo import AliOSSBucket
-from nls import process_intermediate_to_srt, process_to_json
+from .nls import process_intermediate_to_srt, process_to_json
 
 
 def load_metadata():
