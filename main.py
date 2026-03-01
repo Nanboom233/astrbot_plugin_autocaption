@@ -2,6 +2,7 @@ import os
 from typing import Optional
 
 import yaml
+import traceback
 from astrbot.api import AstrBotConfig
 from astrbot.api import logger
 from astrbot.api import message_components as Comp
@@ -212,10 +213,10 @@ class AutoCaptions(Star):
                     Comp.File(name=os.path.basename(output_srt), file=output_srt),
                 ])
             except ValueError as e:
-                logger.error(f"配置错误: {str(e)}")
+                logger.error(f"配置错误: {traceback.format_exc()}")
                 yield event.plain_result(str(e))
             except Exception as e:
-                logger.error(f"处理文件失败: {str(e)}")
+                logger.error(f"处理文件失败: {traceback.format_exc()}")
                 yield event.plain_result(f"处理文件失败: {str(e)}")
 
     @filter.permission_type(filter.PermissionType.ADMIN)
