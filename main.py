@@ -33,7 +33,7 @@ def load_metadata():
 
 
 PLUGIN_META = load_metadata()
-SUPPORT_EXTENSINS = ["mp3", "wav", "flac", "aac", "ogg", "json"]  # 支持音频文件类型 + JSON
+SUPPORT_EXTENSINS = ["mp3", "wav", "flac", "aac", "ogg", "m4a", "json"]  # 支持音频文件类型 + JSON
 
 
 @register(
