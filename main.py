@@ -8,8 +8,8 @@ from astrbot.api import message_components as Comp
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star, register
 
-from SDKs.nls_python_demo import NLSClient
-from SDKs.oss_python_demo import AliOSSBucket
+from .SDKs.nls_python_demo import NLSClient
+from .SDKs.oss_python_demo import AliOSSBucket
 from nls import process_intermediate_to_srt, process_to_json
 
 
