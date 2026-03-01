@@ -10,6 +10,7 @@ dependencies = [
     "aiohttp>=3.13.3",
     "astrbot>=4.18.3",
     "ffmpeg-python>=0.2.0",
+    "oss2~=2.18.1",
     "python-magic>=0.4.27",
     "static-ffmpeg>=3.0",
 ]
