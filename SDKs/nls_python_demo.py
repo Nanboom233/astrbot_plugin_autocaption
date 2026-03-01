@@ -146,9 +146,8 @@ class NLSClient:
         if not ffmpeg_path:
             raise EnvironmentError("ffmpeg not found in PATH. Please install ffmpeg and try again.")
 
-        stdout, stderr = None, None
         try:
-            stdout, stderr = (
+            (
                 ffmpeg
                 .input(abs_input)
                 .output(abs_output, ar=16000, acodec="libmp3lame")
@@ -156,9 +155,8 @@ class NLSClient:
                 .run(cmd=ffmpeg_path, capture_stdout=True, capture_stderr=True)
             )
         except ffmpeg.Error as exc:
-            if stderr:
-                logger.error(stdout)
-                logger.error(stderr)
+            logger.error(exc.stdout)
+            logger.error(exc.stderr)
             raise RuntimeError(f"ffmpeg failed to convert {abs_input} to mp3") from exc
 
         if not os.path.exists(abs_output):
