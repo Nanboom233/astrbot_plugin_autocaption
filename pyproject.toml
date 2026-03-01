@@ -1,0 +1,15 @@
+[project]
+name = "astrbot-plugin-autocaption"
+version = "1.0"
+description = "使用Aliyun NLS 实现自动字幕功能的Astrbot插件"
+authors = [
+    { name = "Nanboom233" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.13.3",
+    "astrbot>=4.18.3",
+    "ffmpeg-python>=0.2.0",
+    "python-magic>=0.4.27",
+    "static-ffmpeg>=3.0",
+]

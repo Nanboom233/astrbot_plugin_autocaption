@@ -1,0 +1,6 @@
+name: astrbot_plugin_autocaption
+display_name: NLS自动字幕姬
+desc: NLS自动字幕姬
+version: v1.0.0
+author: Nanboom233
+repo: https://github.com/nanboom233/astrbot_plugin_autocaption
