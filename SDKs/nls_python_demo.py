@@ -136,6 +136,13 @@ class NLSClient:
 
         abs_input = os.path.abspath(input_path)
         abs_output = os.path.abspath(output_path) if output_path else os.path.splitext(abs_input)[0] + ".mp3"
+        if os.path.normcase(abs_output) == os.path.normcase(abs_input):
+            base_root = os.path.splitext(abs_input)[0] + "_nls"
+            abs_output = f"{base_root}.mp3"
+            index = 1
+            while os.path.exists(abs_output):
+                abs_output = f"{base_root}-{index}.mp3"
+                index += 1
 
         try:
             static_ffmpeg.add_paths()
