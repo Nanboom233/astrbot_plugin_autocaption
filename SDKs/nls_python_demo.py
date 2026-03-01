@@ -5,14 +5,13 @@ import shutil
 import time
 from typing import Optional
 
+import ffmpeg
+import static_ffmpeg
 from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkcore.client import AcsClient
 from aliyunsdkcore.request import CommonRequest
 from astrbot.core import LogManager
-
-import ffmpeg
-import static_ffmpeg
 
 from .oss_python_demo import AliOSSBucket
 
@@ -147,8 +146,9 @@ class NLSClient:
         if not ffmpeg_path:
             raise EnvironmentError("ffmpeg not found in PATH. Please install ffmpeg and try again.")
 
+        stdout, stderr = None, None
         try:
-            (
+            stdout, stderr = (
                 ffmpeg
                 .input(abs_input)
                 .output(abs_output, ar=16000, acodec="libmp3lame")
@@ -156,6 +156,9 @@ class NLSClient:
                 .run(cmd=ffmpeg_path, capture_stdout=True, capture_stderr=True)
             )
         except ffmpeg.Error as exc:
+            if stderr:
+                logger.error(stdout)
+                logger.error(stderr)
             raise RuntimeError(f"ffmpeg failed to convert {abs_input} to mp3") from exc
 
         if not os.path.exists(abs_output):
